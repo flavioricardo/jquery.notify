@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>jQuery Notify v0.1</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript" src="jquery-notify.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function($) {
+				$("button").click(function() {
+					$.notify({
+						type: "notify-shout",
+						text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+						close: true,
+						velocity: 900,
+						timeout: 3000
+					});
+				});
+			});
+		</script>
+		<link rel="stylesheet" href="jquery-notify.css" type="text/css" media="screen" />
+    </head>
+    <body>
+		<div id="notify"></div>
+		<h1>Hello World</h1>
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+		<button>Show notify message!</button>
+    </body>
+</html>
