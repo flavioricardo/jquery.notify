@@ -7,7 +7,7 @@
 	height: 30px;
 	margin: 0;
 	padding: 15px 0 5px;
-	position: relative;
+	position: fixed;
 	text-align: center;
 	z-index: 1000;
 	width: 100%;
@@ -36,5 +36,9 @@
 	color: inherit;
 	float: right;
 	margin: 0 10px 0 0;
+	text-decoration: none;
+}
+
+.notify-close:hover {
 	text-decoration: none;
 }

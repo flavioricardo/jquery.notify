@@ -1,10 +1,17 @@
 /**
- * jQuery Notify v0.1
- * Released under the MIT, BSD, and GPL Licenses.
+ * jQuery Notify 0.2
+ * Provides a simple and easy way to insert notification messages using jQuery
+ *
+ * Copyright 2011 Flávio Ricardo
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice
  */
 
 jQuery.notify = function(options) {
 	(function($) {
+
+		$("#notify").html("");
 
 		if (!options)
 			options = {}
@@ -34,7 +41,7 @@ jQuery.notify = function(options) {
 			$("#notify").slideDown("slow");
 		}
 
-		if (options.timeout) {
+		if (!options.close && options.timeout) {
 			$("#notify").delay(options.timeout).slideUp("slow");
 		}
 
