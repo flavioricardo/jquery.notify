@@ -14,31 +14,32 @@
 }
 
 /* Signaling Message */
-.notify-shout {
+.shout {
 	background: #F8FE65;
 	color: #333;
 }
 
 /* Error Message */
-.notify-error {
+.error {
 	background: #FE3D26;
 	color: #FCFCFC;
 }
 
 /* Success Message */
-.notify-success {
+.success {
 	background: #67A05F;
 	color: #FCFCFC;
 }
 
 /* Close Button */
-.notify-close {
+.close {
 	color: inherit !important;
+	cursor: pointer;
 	float: right;
 	margin: 0 10px 0 0;
 	text-decoration: none;
 }
 
-.notify-close:hover {
+.close:hover {
 	text-decoration: none;
 }

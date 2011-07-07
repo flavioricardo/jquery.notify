@@ -1,9 +1,8 @@
 /**
- * jQuery Notify 0.2
+ * jQuery Notify 0.3
  * Provides a simple and easy way to insert notification messages using jQuery
  *
  * Copyright 2011 Flávio Ricardo
- *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice
  */
@@ -11,35 +10,28 @@
 jQuery.notify = function(options) {
 	(function($) {
 
-		$("#notify").html("");
+		var defaults = {
+			type : "shout",
+			text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+			close : false,
+			speed : "slow",
+			timeout : 900
+		};
 
-		if (!options)
-			options = {}
+		options = $.extend(defaults, options);
 
-		if (options.type) {
-			$("#notify").addClass(options.type);
-		} else {
-			$("#notify").addClass("notify-shout");
-		}
-
-		if (options.text) {
-			$("#notify").prepend(options.text);
-		} else {
-			$("#notify").prepend("Lorem Ipsum is simply dummy text of the printing and typesetting industry");
-		}
+		$("#notify").removeClass($(this).attr("class"));
+		$("#notify").addClass(options.type);
+		$("#notify").html("").html(options.text);
 
 		if (options.close) {
-			$("#notify").append("<a class=\"notify-close\" href=\"#\">[x]</a>");
-			$("a.notify-close").live("click", function() {
-				$("#notify").slideUp((options.velocity) ? options.velocity : "slow");
+			$("#notify").append("<span class=\"close\">[x]</span>");
+			$("span.close").live("click", function() {
+				$("#notify").slideUp(options.speed);
 			});
 		}
 
-		if (options.velocity) {
-			$("#notify").slideDown(options.velocity);
-		} else {
-			$("#notify").slideDown("slow");
-		}
+		$("#notify").slideDown(options.speed);
 
 		if (!options.close && options.timeout) {
 			$("#notify").delay(options.timeout).slideUp("slow");
