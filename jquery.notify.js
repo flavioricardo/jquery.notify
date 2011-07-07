@@ -1,5 +1,5 @@
 /**
- * jQuery Notify 0.3
+ * jQuery Notify v0.3
  * Provides a simple and easy way to insert notification messages using jQuery
  *
  * Copyright 2011 Flávio Ricardo
@@ -15,7 +15,7 @@ jQuery.notify = function(options) {
 			text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
 			close : false,
 			speed : "slow",
-			timeout : 900
+			timeout : 9000
 		};
 
 		options = $.extend(defaults, options);
@@ -33,9 +33,9 @@ jQuery.notify = function(options) {
 
 		$("#notify").slideDown(options.speed);
 
-		if (!options.close && options.timeout) {
-			$("#notify").delay(options.timeout).slideUp("slow");
-		}
+		setTimeout(function() {
+			$("#notify").slideUp("slow")
+		}, options.timeout);
 
 		return this;
 

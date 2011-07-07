@@ -1,28 +1,38 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>jQuery Notify v0.1</title>
+        <title>jQuery Notify v0.3</title>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="jquery.notify.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function($) {
 				$("button").click(function() {
 					$.notify({
-						type: "notify-shout",
-						text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-						close: true,
-						velocity: 900,
-						timeout: 3000
+						type : $(this).attr("class"),
+						close : true
 					});
 				});
 			});
 		</script>
+		<style type="text/css">
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			button {
+				border: 1px solid #EEE;
+				cursor: pointer;
+				padding: 10px 20px;
+			}
+		</style>
 		<link rel="stylesheet" href="jquery.notify.css" type="text/css" media="screen" />
     </head>
     <body>
 		<div id="notify"></div>
-		<h1>Hello World</h1>
-		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-		<button>Show notify message!</button>
+		<h1>jQuery Notify</h1>
+		<p>Provides a simple and easy way to insert notification messages using jQuery.</p>
+		<p>Select one of the buttons to set jQuery Notify in action.</p>
+		<button class="shout">Shout</button>
+		<button class="success">Success</button>
+		<button class="error">Error</button>
     </body>
 </html>

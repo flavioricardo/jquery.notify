@@ -7,7 +7,7 @@
 	height: 30px;
 	margin: 0;
 	padding: 15px 0 5px;
-	position: fixed;
+	position: relative;
 	text-align: center;
 	z-index: 1000;
 	width: 100%;
