@@ -10,6 +10,20 @@
 jQuery.notify = function(options) {
 	(function($) {
 
+		// Refatorar!
+		// A idéia é o plugin funcionar tanto com a passagem
+		// de vários parâmetros como também passando apenas a mensagem
+		if (typeof options === "string") {
+			$("#notify").addClass("shout");
+			$("#notify").html("").html(options);
+			$("#notify").append("<span class=\"close\">[x]</span>");
+			$("span.close").live("click", function() {
+				$("#notify").slideUp("slow");
+			});
+			$("#notify").slideDown("slow");
+			return false;
+		}
+
 		var defaults = {
 			type : "shout",
 			text : "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
