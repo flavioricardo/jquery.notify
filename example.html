@@ -7,18 +7,36 @@
 		<script type="text/javascript">
 			$(document).ready(function($) {
 				$("button").click(function() {
-					$.notify("Flávio Ricardo Bazana Meira");
+					$.notify($(this).attr("class"), "This is a manual activate example using the short form!");
+				});
+				$.notify({
+					type: "error",
+					text: "This is a automatic example using the long form!",
+					close: true
 				});
 			});
 		</script>
 		<style type="text/css">
 			body {
 				font-family: Arial, Helvetica, sans-serif;
+				margin: 0 auto;
 			}
 			button {
 				border: 1px solid #EEE;
 				cursor: pointer;
 				padding: 10px 20px;
+			}
+			button.shout {
+				background: #F8FE65;
+				color: #333;
+			}
+			button.error {
+				background: #FE3D26 ;
+				color: #FCFCFC;
+			}
+			button.success {
+				background: #67A05F;
+				color: #FCFCFC;
 			}
 		</style>
 		<link rel="stylesheet" href="jquery.notify.css" type="text/css" media="screen" />

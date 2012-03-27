@@ -7,32 +7,32 @@
 	height: 30px;
 	margin: 0;
 	padding: 15px 0 5px;
-	position: relative;
+	position: fixed;
 	text-align: center;
 	z-index: 1000;
 	width: 100%;
 }
 
 /* Signaling Message */
-.shout {
+#notify.shout {
 	background: #F8FE65;
 	color: #333;
 }
 
 /* Error Message */
-.error {
-	background: #FE3D26;
+#notify.error {
+	background: #FE3D26 ;
 	color: #FCFCFC;
 }
 
 /* Success Message */
-.success {
+#notify.success {
 	background: #67A05F;
 	color: #FCFCFC;
 }
 
 /* Close Button */
-.close {
+#notify span.close {
 	color: inherit !important;
 	cursor: pointer;
 	float: right;
@@ -40,6 +40,6 @@
 	text-decoration: none;
 }
 
-.close:hover {
+#notify span.close:hover {
 	text-decoration: none;
 }

@@ -7,22 +7,9 @@
  * Redistributions of files must retain the above copyright notice
  */
 
-jQuery.notify = function(options) {
-	(function($) {
+jQuery.notify = function( options, content ) {
 
-		// Refatorar!
-		// A idéia é o plugin funcionar tanto com a passagem
-		// de vários parâmetros como também passando apenas a mensagem
-		if (typeof options === "string") {
-			$("#notify").addClass("shout");
-			$("#notify").html("").html(options);
-			$("#notify").append("<span class=\"close\">[x]</span>");
-			$("span.close").live("click", function() {
-				$("#notify").slideUp("slow");
-			});
-			$("#notify").slideDown("slow");
-			return false;
-		}
+	(function( $ ) {
 
 		var defaults = {
 			type : "shout",
@@ -32,26 +19,44 @@ jQuery.notify = function(options) {
 			timeout : 9000
 		};
 
-		options = $.extend(defaults, options);
+		if ( typeof (options) === "object" )
+			options = $.extend(defaults, options);
 
-		$("#notify").removeClass($(this).attr("class"));
-		$("#notify").addClass(options.type);
-		$("#notify").html("").html(options.text);
+		var methods = {
+			shout : function( content ) {
+				$("#notify").removeClass($(this).attr("class")).addClass("shout");
+				$("#notify").html("").html(content);
+				$("#notify").slideDown(defaults.speed).delay(defaults.timeout).slideUp("slow");
+			},
+			error : function ( content ) {
+				$("#notify").removeClass($(this).attr("class")).addClass("error");
+				$("#notify").html("").html(content);
+				$("#notify").slideDown(defaults.speed).delay(defaults.timeout).slideUp("slow");
+			},
+			success : function ( content ) {
+				$("#notify").removeClass($(this).attr("class")).addClass("success");
+				$("#notify").html("").html(content);
+				$("#notify").slideDown(defaults.speed).delay(defaults.timeout).slideUp("slow");
+			}
+		};
 
-		if (options.close) {
-			$("#notify").append("<span class=\"close\">[x]</span>");
-			$("span.close").live("click", function() {
-				$("#notify").slideUp(options.speed);
-			});
+		if ( methods[options] ) {
+			return methods[options].call( this, content );
+		} else {
+			$("#notify").removeClass($(this).attr("class")).addClass(options.type);
+			$("#notify").html("").html(options.text);
+
+			if ( options.close ) {
+				$("#notify").append("<span class=\"close\">[x]</span>");
+				$("span.close").live("click", function() {
+					$("#notify").dequeue();
+				});
+			}
+
+			$("#notify").slideDown(options.speed).delay(options.timeout).slideUp("slow");
 		}
-
-		$("#notify").slideDown(options.speed);
-
-		setTimeout(function() {
-			$("#notify").slideUp("slow")
-		}, options.timeout);
 
 		return this;
 
-	})(jQuery)
+	})( jQuery );
 };
