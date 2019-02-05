@@ -1,5 +1,5 @@
 /**
- * jQuery Notify v0.3
+ * jQuery Notify v0.4
  * Provides a simple and easy way to insert notification messages using jQuery
  *
  * Copyright 2011 Flávio Ricardo
@@ -18,6 +18,8 @@ jQuery.notify = function( options, content ) {
 			speed : "slow",
 			timeout : 9000
 		};
+
+		$("body").prepend($("<div></div>").attr("id", "notify"));
 
 		if ( typeof (options) === "object" )
 			options = $.extend(defaults, options);
@@ -48,7 +50,7 @@ jQuery.notify = function( options, content ) {
 
 			if ( options.close ) {
 				$("#notify").append("<span class=\"close\">[x]</span>");
-				$("span.close").live("click", function() {
+				$("span.close").on("click", function() {
 					$("#notify").dequeue();
 				});
 			}
